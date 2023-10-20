@@ -64,9 +64,9 @@ export const Board = ({wonBoard, makeActives, active=false}) => {
   }
 
   return (
-    <div className={`grid grid-cols-3 w-max bg-neutral-800 sm:border-4 x-sm:gap-2 p-2 x-sm:p-3 gap-1 border-2 sm:rounded-xl x-sm:border-1 rounded-lg 
-    ${active && winner == 0 ? "border-neutral-300": "border-black"}
-    ${winner == 1 ? "border-blue-400" : winner == -1 ? "border-red-500" : ""}`}>
+    <div className={`grid grid-cols-3 w-max sm:border-4 x-sm:gap-2 p-2 x-sm:p-3 gap-1 border-2 sm:rounded-xl x-sm:border-1 rounded-lg 
+    ${winner == 0 ? "border-black" : "border-white"}
+    ${winner == 1 ? "bg-blue-700" : winner == -1 ? "bg-red-700" : active ? "bg-neutral-300" : "bg-neutral-900"}`}>
       {board.map((row, y) =>
       <>
         {row.map((col, x) => <Cell clickedCell={() => clickedCell(x, y)}/>)}
