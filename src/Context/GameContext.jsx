@@ -19,7 +19,7 @@ export const gameReducer = (state, action) => {
                     state.actives = [[false, false, false], [false, false, false], [false, false, false]] //win game
                 }
             }
-            if (state.winner !== 0)
+            if (state.winner === 0)
             {
                 if (state.boards[action.payload.y][action.payload.x]) {
                     for (let row = 0; row < 3; row++) {
