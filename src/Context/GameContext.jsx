@@ -19,15 +19,18 @@ export const gameReducer = (state, action) => {
                     state.actives = [[false, false, false], [false, false, false], [false, false, false]] //win game
                 }
             }
-            if (state.boards[action.payload.y][action.payload.x]) {
-                for (let row = 0; row < 3; row++) {
-                    for (let col = 0; col < 3; col++) {
-                        newActives[row][col] = state.boards[row][col] == 0
+            if (state.winner !== 0)
+            {
+                if (state.boards[action.payload.y][action.payload.x]) {
+                    for (let row = 0; row < 3; row++) {
+                        for (let col = 0; col < 3; col++) {
+                            newActives[row][col] = state.boards[row][col] == 0
+                        }
                     }
                 }
-            }
-            else {
-                newActives[action.payload.y][action.payload.x] = true;
+                else {
+                    newActives[action.payload.y][action.payload.x] = true;
+                }
             }
             return {...state, superBoard: state.superBoard, boards: state.boards, actives: newActives, winner: state.winner, turn: state.turn*-1}
         default:
