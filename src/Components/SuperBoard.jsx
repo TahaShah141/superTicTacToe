@@ -3,9 +3,13 @@ import { Board } from './Board'
 import { useGameContext } from '../Context/useGameContext'
 
 
-export const SuperBoard = () => {
-  const {boards, actives, dispatch} = useGameContext()
+export const SuperBoard = ({endGame}) => {
+  const {boards, actives, winner} = useGameContext()
   
+  useEffect(() => {
+    if (winner !== 0) endGame(winner)
+  }, [winner])
+
   return (
       <div className='w-max grid grid-cols-3 gap-3'>
 
