@@ -11,7 +11,6 @@ export const gameReducer = (state, action) => {
                 [false, false, false]
             ]
             state.superBoard[action.payload.board][action.payload.y][action.payload.x] = state.turn //add cell
-            console.log(state.turn)
             if (checkWin(state.superBoard[action.payload.board], state.turn)) { //check if board won
                 state.boards[Math.floor(action.payload.board / 3)][action.payload.board % 3] = state.turn //win board
                 if (checkWin(state.boards, state.turn)) { //check if game won
@@ -32,7 +31,8 @@ export const gameReducer = (state, action) => {
                     newActives[action.payload.y][action.payload.x] = true;
                 }
             }
-            return {...state, superBoard: state.superBoard, boards: state.boards, actives: newActives, winner: state.winner, turn: state.turn*-1}
+            console.log(state.turn)
+            return {...state, superBoard: state.superBoard, boards: state.boards, actives: newActives, winner: state.winner, turn: state.turn * -1}
         default:
             return state
     }
