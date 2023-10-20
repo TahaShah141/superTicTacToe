@@ -139,10 +139,12 @@ const checkWin = (board, turn) => {
     if (found) return true
 
     let count = 0
+    found = true
     for (let row = 0; row < 3; row++) {
       for (let col = 0; col < 3; col++) {
         if (board[row][col] === turn) count++
+        if (board[row][col] === 0) found = false
       }
     }
-    return (count >= 5) 
+    return (found && count >= 5) 
 }
