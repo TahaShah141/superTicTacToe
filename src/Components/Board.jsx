@@ -6,7 +6,7 @@ export const Board = ({board, active=false}) => {
   const {superBoard, boards, turn, dispatch} = useGameContext()
 
   const clickedCell = (x, y) => {
-    if (!active || boards[Math.floor(board/3)][board %3] !== 0) return 
+    if (!active || boards[Math.floor(board/3)][board %3] !== 0 || superBoard[board][y][x] !== 0) return;
     dispatch({type: "MOVE", payload: {board, y, x}})
   }
 
